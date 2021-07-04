@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="sh_product_qrcode_generator_wizard_form" model="ir.ui.view">
+            <field name="name">sh.product.qrcode.generator.wizard.form</field>
+            <field name="model">sh.product.qrcode.generator.wizard</field>
+            <field name="arch" type="xml">
+                <form string="QR Code Generator">
+					<group>
+						<group colspan="2">
+							<field name="is_overwrite_existing"/>
+						</group>					
+ 					
+	 					<field name="product_tmpl_ids" attrs="{'invisible': [('product_tmpl_ids', '=', [] )]}"/>
+	 					<field name="product_var_ids" attrs="{'invisible': [('product_var_ids', '=', [] )]}"/> 					
+ 					</group>
+ 					
+                    <footer>
+                        <button name="action_generate_qr_code" string="Generate QR Code" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+       <act_window
+            name="Generate QR Code"
+            id="sh_product_var_qrcode_generator_wizard_action"
+            res_model="sh.product.qrcode.generator.wizard"
+            binding_model="product.product"
+            view_mode="form"
+            target="new"
+            groups="sh_product_qrcode_generator.group_sh_product_qr_code_generator"/>    
+        
+		
+       <act_window
+            name="Generate QR Code"
+            id="sh_product_tmpl_qrcode_generator_wizard_action"
+            res_model="sh.product.qrcode.generator.wizard"
+            binding_model="product.template"
+            view_mode="form"
+            target="new"
+            groups="sh_product_qrcode_generator.group_sh_product_qr_code_generator"/> 
+                    
+        
+</odoo>

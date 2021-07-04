@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- vim:fdn=3:-->
+<odoo>
+    <data>
+
+        <template id="aspl_manage_so_pos_orders_index" name="aspl_manage_so_pos_orders assets"
+                  inherit_id="point_of_sale.index">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/aspl_manage_so_pos_orders/static/src/js/models.js"></script>
+                <script type="text/javascript" src="/aspl_manage_so_pos_orders/static/src/js/db.js"></script>
+                <script type="text/javascript" src="/aspl_manage_so_pos_orders/static/src/js/screen.js"></script>
+                <script type="text/javascript" src="/aspl_manage_so_pos_orders/static/src/js/popup.js"></script>
+                <script type="text/javascript" src="/aspl_manage_so_pos_orders/static/src/js/flashcanvas.js"></script>
+                <script type="text/javascript"
+                        src="/aspl_manage_so_pos_orders/static/src/js/jSignature.min.js"></script>
+                <script type="text/javascript"
+                        src="/aspl_manage_so_pos_orders/static/src/js/lib/jquery.simplePagination.js"></script>
+                <link rel="stylesheet" href="/aspl_manage_so_pos_orders/static/src/css/pos.css" id="pos-stylesheet"/>
+                <link rel="stylesheet" href="/aspl_manage_so_pos_orders/static/src/css/datepicker.css"
+                      id="pos-stylesheet"/>
+                <script type="text/javascript"
+                        src="/aspl_manage_so_pos_orders/static/src/js/lib/jquery.datetimepicker.full.min.js"></script>
+                <script type="text/javascript"
+                        src="/aspl_manage_so_pos_orders/static/src/js/lib/fabric.min.js"></script>
+                <link rel="stylesheet" href="/aspl_manage_so_pos_orders/static/src/css/jquery.datetimepicker.css"
+                      id="pos-stylesheet"/>
+                <script type="text/javascript"
+                        src="/aspl_manage_so_pos_orders/static/src/js/JsBarcode.all.min.js"></script>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

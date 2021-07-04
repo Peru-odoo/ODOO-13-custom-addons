@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_purchaseorder_document_inherit_product_image_on_reports" inherit_id="purchase.report_purchaseorder_document">
+    <xpath expr="//t/div/table[1]/thead/tr/th[1]" position="before">
+         <th>Image</th>
+    </xpath>
+    <xpath expr="//t/div/table[1]/tbody/t/tr/t/td[1]" position="before">
+        <td>
+        	<img t-attf-src="data:image/*;base64,{{line.product_id.image_1920}}" style="width:50%;height:10%"/>
+        </td>
+    </xpath>
+</template>
+</odoo>

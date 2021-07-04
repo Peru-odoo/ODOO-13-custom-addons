@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+
+<t t-extend="ListView.buttons">
+    <t t-jquery=".o_list_buttons" t-operation="append">
+        <button class="btn btn-primary js_cls_btn_sh_scan_inventory_adjt_tree d-none" type="button">Mobile Barcode Scanning</button>
+    </t>
+</t>
+
+
+    <t t-name="sh_inventory_adjustment_barcode_mobile.scan.wizard.tree">
+
+<div class="mt-3 mb-3 container js_cls_sh_scan_inventory_adjt_tree_scanning_portion">
+
+				 <script type="text/javascript" src="/sh_all_in_one_mbs/static/src/js/ZXing.js"></script>
+				 
+				
+				
+				<div class="mt-3 mb-2">
+
+  				  <strong>
+  				  				
+				  <input type="checkbox" name="js_sh_chkbox_inventory_adjt_bm_is_cont_scan" value="True"/>
+
+  				  <label for="js_sh_chkbox_inventory_adjt_bm_is_cont_scan">Continuously Scan?</label>
+  				  
+  				  </strong>
+  				
+				
+				</div>				
+
+
+				
+			
+				
+		        <section class="">
+		        		
+		            <div>
+		                <a role='button' style="color:#fff;border-radius:0px;margin-bottom:5px;margin-right:5px;" class="btn btn-primary" id="js_id_sh_inventory_adjt_barcode_mobile_start_btn">
+		                	<i class="fa fa-barcode"></i>
+		                	Start
+		                </a>
+		                <a role='button' style="display:none;color:#fff;border-radius:0px;margin-bottom:5px;margin-right:5px;" class="btn btn-danger" id="js_id_sh_inventory_adjt_barcode_mobile_reset_btn">
+		                    <i class="fa fa-barcode"></i>
+		                	Stop
+		                </a>
+		            </div>
+				  			
+		            <div id="js_id_sh_inventory_adjt_barcode_mobile_vid_div" style="">
+		            
+				  		<group style="margin-bottom: 10px;">
+								<div class="mt-2 mb-2 form-group row">
+			 					<strong style="align-self: center;" class="col-3">Camera</strong>
+			          				<select class="col-8 form-control" id="js_id_sh_inventory_adjt_barcode_mobile_cam_select">
+			             			</select>
+								</div>	
+				         </group>
+			                     
+		                <video id="video" class="cls_sh_all_in_one_mbs_video_tag" width="600" height="400" style="border: 1px solid gray"></video>
+		                
+		            	<span style="display:block;">Result:</span>
+		            	<code id="js_id_sh_inventory_adjt_barcode_mobile_result"></code>
+		  			</div>	  
+	  					  			
+		
+		        </section>     
+
+</div>
+
+    </t>
+
+
+
+</templates>

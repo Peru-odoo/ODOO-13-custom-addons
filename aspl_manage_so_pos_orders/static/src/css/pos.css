@@ -1,0 +1,455 @@
+#pos_print_invoice_choice {
+    margin: 0px auto;
+    width: 100%;
+    font-weight: normal;
+    /* height: 100%; */
+}
+
+.invoice_print_btn {
+    font-size: 17px;
+    font-weight: inherit;
+}
+
+#pos_print_invoice_choice #choice_print_pos_receipt, #pos_print_invoice_choice #choice_pdf_download
+	{
+	float: left;
+	width: 50%;
+	border-radius: 15px;
+}
+
+#pos_print_invoice_choice #choice_print_pos_receipt:active, #pos_print_invoice_choice #choice_pdf_download:active
+{
+	transform: translateY(4px);
+}
+
+
+/*The OrderList List Screen */
+.pos .sale-orderlist-screen .sale-order-list,
+.pos .invoice-list-screen .order-invoice-list,
+.pos .orderlist-screen .order-list {
+    font-size: 16px;
+    width: 100%;
+    line-height: 40px;
+}
+
+.pos .sale-orderlist-screen .sale-order-list th, .pos .sale-orderlist-screen .sale-order-list td,
+.pos .invoice-list-screen .order-invoice-list th, .pos .invoice-list-screen .order-invoice-list td,
+.pos .orderlist-screen .order-list th, .pos .orderlist-screen .order-list td
+{
+    padding: 0px 5px;
+}
+
+.pos .sale-orderlist-screen .sale-order-list tr ,
+.pos .invoice-list-screen .order-invoice-list tr ,
+.pos .orderlist-screen .order-list tr {
+    transition: all 150ms linear;
+    background: rgb(230, 230, 230);
+}
+
+.pos .sale-orderlist-screen .sale-order-list thead>tr, .pos .sale-orderlist-screen .sale-order-list tr:nth-child(even),
+.pos .invoice-list-screen .order-invoice-list thead>tr, .pos .invoice-list-screen .order-invoice-list tr:nth-child(even),
+.pos .orderlist-screen .order-list thead>tr, .pos .orderlist-screen .order-list tr:nth-child(even)
+    {
+    background: rgb(247, 247, 247);
+}
+
+.pos .sale-orderlist-screen .sale-order-list tr.highlight,
+.pos .invoice-list-screen .order-invoice-list tr.highlight,
+.pos .orderlist-screen .order-list tr.highlight {
+    transition: all 150ms linear;
+    background: rgb(110, 200, 155) !important;
+    color: white;
+}
+
+.pos .sale-orderlist-screen .sale-order-list tr.lowlight,
+.pos .invoice-list-screen .order-invoice-list tr.lowlight,
+.pos .orderlist-screen .order-list tr.lowlight {
+    transition: all 150ms linear;
+    background: rgb(216, 238, 227);
+}
+
+.pos .sale-orderlist-screen .sale-order-list tr.lowlight:nth-child(even),
+.pos .invoice-list-screen .order-invoice-list tr.lowlight:nth-child(even),
+.pos .orderlist-screen .order-list tr.lowlight:nth-child(even) {
+    transition: all 150ms linear;
+    background: rgb(227, 246, 237);
+}
+
+.screen .top-content .filter {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.screen .top-content .button.paid {
+    left: 0px;
+    margin-left: 136px;
+}
+
+.sale-orderlist-screen .top-content .button.draft {
+    left: 0px;
+    margin-left: 250px;
+}
+
+.orderlist-screen .top-content .button.draft {
+    left: 0px;
+    margin-left: 236px;
+}
+
+.orderlist-screen .top-content .button.posted {
+    left: 0px;
+    margin-left: 336px;
+}
+
+.orderlist-screen .reload {
+    left: 609px;
+}
+
+.invoice-list-screen .button.draft {
+    left: 0px;
+    margin-left: 120px;
+}
+.invoice-list-screen .button.open {
+    left: 0px;
+    margin-left: 235px;
+}
+.invoice-list-screen .reload {
+    left: 27%;
+}
+
+.sale-orderlist-screen .top-content .button.confirm {
+    left: 0px;
+    margin-left: 410px;
+}
+.sale-orderlist-screen .top-content .button.my_orders {
+    left: 0px;
+    margin-left: 545px;
+}
+
+.screen .top-content .button.date {
+    left: 0px;
+    margin-left: 536px;
+    z-index: 100;
+}
+
+.screen .top-content .button.not-selected {
+    background: rgb(230, 230, 230);
+    color: #000;
+}
+
+.screen .top-content .button.selected {
+    background: #088000;
+    color: #FFF;
+}
+
+.pos .sale-orderlist-screen .searchbox {
+    right: auto;
+    margin-left: -150px;
+    margin-top: 8px;
+    left: 92%;
+}
+
+.screen .top-content .button.not-selected {
+    background: rgb(230, 230, 230);
+}
+
+.pos .sale-orderlist-screen .searchbox input {
+    width: 120px;
+}
+
+.screen .top-content .date-filter input {
+    margin-top: 13px;
+    margin-left: 356px;
+    width: 150px;
+    height: 27px
+}
+
+.screen .top-content .date-filter i {
+    height: 20px;
+}
+
+.orderlist-screen .top-content .date-filter input {
+    margin-top: 15px;
+    margin-left: 46px;
+    width: 150px;
+    height: 27px;
+}
+
+.orderlist-screen .top-content .date-filter i {
+    height: 20px;
+}
+
+#pagination {
+    margin-top: 15px;
+}
+
+#pagination div {
+    display: inline-block;
+}
+
+#order-pagination {
+    margin-top: 15px;
+}
+
+#order-pagination div {
+    display: inline-block;
+}
+
+.rotate {
+    transform: rotate(-360deg);
+    transition: .7s;
+}
+.rotate-reset {
+    transform: rotate(0deg);
+    transition: .7s;
+}
+.selection-area {
+    height: 32px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#7B7979), to(#393939));
+    background: -moz-linear-gradient(#7B7979, #393939);
+    background:  -ms-linear-gradient(#7B7979, #393939);
+    background:      linear-gradient(#7B7979, #393939);
+}
+/* Sale order Popup */
+.popup-sale-order{
+    width: 600px !important;
+    height: 550px !important;
+}
+.date_box{
+    height: 40px;
+    line-height: 40px;
+    border-radius: 2px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100% !important;
+}
+.date_box input{
+    min-height: 0px !important;
+    height: 20px !important;
+    width: 48% !important;
+    float: right;
+    margin-right: 10px;
+    box-sizing: unset !important;
+    font-size: 14px !important;
+}
+/* TABS */
+.tabs-menu {
+    height: 30px;
+    float: left;
+    clear: both;
+}
+
+.tabs-menu li {
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    margin-right: 10px;
+    background-color: #ccc;
+    border-top: 1px solid #d4d4d1;
+    border-right: 1px solid #d4d4d1;
+    border-left: 1px solid #d4d4d1;
+}
+
+.tabs-menu li.current {
+    position: relative;
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+    z-index: 5;
+}
+
+.tabs-menu li a {
+    padding: 10px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.tabs-menu .current a {
+    color: #2e7da3;
+}
+
+.tab {
+    border: 1px solid #d4d4d1;
+    background-color: #fff;
+    float: left;
+    margin-bottom: 20px;
+    width: 100% !important;
+    height: 326px;
+}
+select.shipping_contact_selection option{
+    font-size: 14px !important;
+}
+
+.tab-content {
+    width: 100% !important;
+    padding: 20px;
+    display: none;
+    text-align: left;
+}
+.tab-content input, .tab-content textarea {
+    border: thin solid #555 !important;
+}
+div.choices_content{
+    padding: 5px;
+}
+.shipping_content.choice-2, .invoice_content.choice-2{
+    position: absolute;
+    width: 50%;
+    left: 20px;
+}
+.shipping_content, .invoice_content{
+    font-size: 14px;
+}
+div.ship_create_contact, div.invoice_create_contact{
+    display: none;
+    margin-top: 30px;
+}
+div.ship_create_contact table tr td, div.invoice_create_contact table tr td{
+    padding: 5px 0px;
+}
+.tab-content input[type=checkbox]{
+    width: 10% !important;
+    min-height: 0px !important;
+}
+.ship_create_contact select, .invoice_create_contact select{
+    width: 80% !important;
+}
+#tab-1 {
+ display: block;
+}
+.ui-autocomplete {
+    max-height: 150px;
+    height: auto;
+    min-height:0px;
+    width: 150px;
+    background: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000 !important;
+}
+.popup_content{
+padding: 0px 20px;
+}
+.popup_content ul{
+   padding: 0px 20px;
+   font-weight: normal !important;
+}
+.popup_content p, ul{
+   font-size: 15px;
+   text-align: justify;
+}
+.popup_content ul li {
+list-style-type: square !important;
+}
+
+/* Backend error popup */
+.modal-dialog {
+   margin: 0 auto;
+   position: relative;
+   width: 500px;
+   height: 300px;
+}
+
+.modal-dialog .close {
+    position: absolute;
+    right:11px
+}
+
+.modal-header{
+    display:flex;
+}
+
+.modal-footer {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+/* Sale return popup */
+.modal-dialog .popup-return-product tr:nth-child(even)
+    {
+    background: rgb(247, 247, 247);
+}
+
+.modal-dialog .popup-return-product tr th {
+    padding: 8px;
+    background-color: #7777744d;
+}
+
+.modal-dialog .popup-return-product tr td {
+    font-size: 16px;
+    padding: 10px;
+}
+
+.pos .popup .popup-product-return-list input, .pos .popup-product-return-list .popup-input{
+    width : 60%;
+    font-size: 16px;
+    padding: 5px;
+    min-height: 14px;
+}
+
+/* product reorder popup */
+.popup-reorder-product {
+    padding: 3px !important;
+    border-radius: 5px !important;
+    background: rgba(255, 255, 255, 0.5);
+    width:819px !important;
+}
+
+.popup-reorder-product .title {
+    margin: 0;
+    padding: 20px;
+    border-radius: 3px 3px 0px 0px;
+    border-bottom: solid 3px rgba(110, 200, 155, 1) !important;
+}
+
+.popup-reorder-product .popup-product-list {
+    border-spacing: 0.5rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.popup-reorder-product .popup-product-list thead tr {
+    font-size: 18px;
+}
+
+.popup-reorder-product .popup-product-list table{
+    overflow-y: auto;
+    text-align: left
+}
+
+.popup-reorder-product .popup-product-list tbody tr {
+    font-size: 14px;
+    font-weight: normal !important;
+    line-height: 3rem;
+
+}
+
+.popup-reorder-product .popup-product-list tbody tr:nth-child(even) {
+    background: rgb(230, 230, 230);
+}
+
+.popup-reorder-product .header .btn {
+    cursor: pointer;
+    float: right;
+    border:none !important;
+    background: none !important;
+}
+
+.popup-reorder-product .footer .save .icon {
+    float: left;
+}
+
+.popup-reorder-product .footer .save .text {
+    float: left;
+    margin-left: 8px;
+    margin-top: 7px;
+}
+
+.sale-line a:link {
+  color: blue;
+}
+.sale-line a:hover {
+  text-decoration: underline;
+}

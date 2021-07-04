@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="OrderReceipt">
+        <receipt align='center' width='48' value-thousands-separator='' >
+            <t t-if='receipt.company.logo'>
+                <img t-att-src='receipt.company.logo' />
+                <br/>
+            </t>
+            <t t-if='!receipt.company.logo'>
+                <h1><t t-esc='receipt.company.name' /></h1>
+                <br/>
+            </t>
+            <div font='b'>
+                <t t-if='receipt.company.contact_address'>
+                    <div><t t-esc='receipt.company.contact_address' /></div>
+                </t>
+                <t t-if='receipt.company.phone'>
+                    <div>Tel:<t t-esc='receipt.company.phone' /></div>
+                </t>
+                <t t-if='receipt.company.vat'>
+                    <div>VAT:<t t-esc='receipt.company.vat' /></div>
+                </t>
+                <t t-if='receipt.company.email'>
+                    <div><t t-esc='receipt.company.email' /></div>
+                </t>
+                <t t-if='receipt.company.website'>
+                    <div><t t-esc='receipt.company.website' /></div>
+                </t>
+                <t t-if='receipt.header_xml'>
+                    <t t-raw='receipt.header_xml' />
+                </t>
+                <t t-if='!receipt.header_xml and receipt.header'>
+                    <div><t t-esc='receipt.header' /></div>
+                </t>
+                <t t-if='receipt.cashier'>
+                    <div class='cashier'>
+                        <div>--------------------------------</div>
+                        <div>Served by <t t-esc='receipt.cashier' /></div>
+                    </div>
+                </t>
+            </div>
+            <br /><br />
+
+          <div font='b'>
+                <t t-if='receipt.client'>
+                  <div>Customer : <t t-esc='receipt.client' /></div>
+              </t>
+          </div>
+          <line line-ratio='1'><left>------------------------------------------------</left></line>
+          <div bold="on"><pre>Items                  Qty    U.P        Amount</pre></div>
+          <line line-ratio='1'><left>------------------------------------------------</left></line>
+
+          <!-- Orderlines -->
+            <div class='orderlines' line-ratio='0.6'>
+                <t t-foreach='receipt.orderlines' t-as='line'>
+                    <t t-set='simple' t-value='line.discount === 0 and line.unit_name === "Unit(s)" and line.quantity === 1' />
+                    <t t-if='simple'>
+                        <line>
+                            <left><t t-esc='line.product_name_wrapped[0]' /></left>
+                            <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='line.price_display' /></value></right>
+                        </line>
+                        <t t-call="XmlReceiptWrappedProductNameLines"/>
+                    </t>
+                    <t t-if='!simple'>
+                        <line line-ratio="1">
+                            <left>
+                                <t t-raw='line.final_product' />
+                                <t t-raw="line.quantity_nb"/>
+                                <t t-raw='line.final_pu' />
+                                <t t-raw='line.final_pd' />
+                            </left>
+                        </line>
+                        <t t-call="XmlReceiptWrappedProductNameLines"/>
+                        <t t-if='line.discount !== 0'>
+                            <line indent='1'><left><pre>   Discount: <t t-esc='line.discount' />%</pre></left></line>
+                        </t>
+
+                    </t>
+                </t>
+            </div>
+
+          <!-- Subtotal -->
+            <t t-set='taxincluded' t-value='Math.abs(receipt.subtotal - receipt.total_with_tax) &lt;= 0.000001' />
+            <t t-if='!taxincluded'>
+                <line line-ratio='1'><left>------------------------------------------------</left></line>
+                <line ident="3">
+                    <left>Sub-total</left>
+                    <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc="receipt.subtotal" /></value></right>
+                </line>
+                <t t-foreach='receipt.tax_details' t-as='tax'>
+                    <line ident="3">
+                        <left><t t-esc='tax.name' /></left>
+                        <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='tax.amount' /></value></right>
+                    </line>
+                </t>
+            </t>
+
+          <!-- Total -->
+            <line line-ratio='1'><left>------------------------------------------------</left></line>
+            <line class='total' size='double-height'>
+                <left><pre>TOTAL</pre></left>
+                <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='receipt.total_with_tax' /></value></right>
+            </line>
+
+          <!-- Payment Lines -->
+            <t t-foreach='paymentlines' t-as='line'>
+                <line>
+                    <left><pre><t t-esc='line.name' /></pre></left>
+                    <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='line.get_amount()'/></value></right>
+                </line>
+            </t>
+            <line>
+                <left><pre>CHANGE</pre></left>
+                <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='receipt.change' /></value></right>
+            </line>
+            <br/>
+
+          <!-- Extra Payment Info -->
+            <t t-if='receipt.total_discount'>
+                <line>
+                    <left>Discounts</left>
+                    <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='receipt.total_discount'/></value></right>
+                </line>
+            </t>
+            <t t-if='taxincluded'>
+                <t t-foreach='receipt.tax_details' t-as='tax'>
+                    <line>
+                        <left><t t-esc='tax.name' /></left>
+                        <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='tax.amount' /></value></right>
+                    </line>
+                </t>
+                <line>
+                    <left>Total Taxes</left>
+                    <right><value t-att-value-decimals='pos.currency.decimals'><t t-esc='receipt.total_tax'/></value></right>
+                </line>
+            </t>
+
+          <!-- Footer -->
+            <t t-if='receipt.footer_xml'>
+                <t t-raw='receipt.footer_xml' />
+            </t>
+
+            <t t-if='!receipt.footer_xml and receipt.footer'>
+                <br/>
+                <t t-esc='receipt.footer' />
+                <br/>
+                <br/>
+            </t>
+
+            <div class='after-footer' />
+
+            <br/>
+            <div font='b'>
+                <div><t t-esc='receipt.name' /></div>
+                <div><t t-esc='receipt.date.localestring' /></div>
+            </div>
+
+        </receipt>
+  </t>
+
+</templates>

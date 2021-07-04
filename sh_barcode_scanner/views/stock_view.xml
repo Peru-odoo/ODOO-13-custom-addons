@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+	
+	
+	
+	
+	
+		<!-- Stock Inventory Form -->
+		<record id="sh_inven_adjt_barcode_scanner_inventory_form" model="ir.ui.view">
+			<field name="name">sh.inven.adjt.barcode.scanner.inventory.form</field>
+			<field name="model">stock.inventory</field> 
+			<field name="inherit_id" ref="stock.view_inventory_form"/>
+            <field name="arch" type="xml">
+				
+				<field name="product_ids" position="after">
+              		<field name="_barcode_scanned" widget="barcode_handler" invisible="1"/>
+            	</field>
+            	
+ 				<button name="action_start" position="after">
+ 					<button name="action_start_sh_inventory_adjust_barcode_scanning" states="draft" string="Start Inventory Scanning" type="object" class="oe_highlight" groups="stock.group_stock_user"/>            	
+            	</button>
+            	
+            	
+            	<xpath expr="//sheet" position="inside">
+            	
+	                <notebook attrs="{'invisible':[('state','=','draft')]}">
+	                    <page string="Inventory Details">
+
+	                        <field name="line_ids" string="Inventory Details" mode="tree">
+								<tree editable="bottom" string="Inventory Details" js_class="inventory_validate_button" decoration-primary="sh_inven_adjt_barcode_scanner_is_last_scanned == True" decoration-danger="product_qty != theoretical_qty" decoration-muted="product_qty == theoretical_qty" decoration-bf="is_editable">
+					                <field name="company_id" invisible="1"/>
+					                <field name="product_tracking" invisible="1"/>
+					                <field name="is_editable" invisible="1"/>
+					                <field name="outdated" invisible="1"/>
+  									
+  									<field name="sequence" widget="handle" />   					
+   									<field name="sh_inven_adjt_barcode_scanner_is_last_scanned" invisible="1"/>
+   									 					                
+					                <field name="product_id" options="{'no_create': True}" width="1.6" readonly="context.get('default_product_id', False)" attrs="{'readonly': ['|',                             ('is_editable', '=', False),                             ('state', '!=', 'confirm')]}"/>
+					                <field name="location_id" groups="stock.group_stock_multi_locations" options="{'no_create': True}" invisible="context.get('readonly_location_id', False)" readonly="context.get('readonly_location_id', False)" attrs="{'readonly': ['|',                             ('is_editable', '=', False),                             ('state', '!=', 'confirm')]}"/>
+					                <field name="inventory_date" optional="hide" width="0.8"/>
+					                <field name="prod_lot_id" groups="stock.group_production_lot" width="0.8" attrs="{'readonly': ['|', '|',                             ('product_tracking', '=', 'none'),                             ('is_editable', '=', False),                             ('state', '!=', 'confirm')]}" context="{'default_product_id': product_id, 'default_company_id': company_id}" optional="show"/>
+					                <field name="package_id" groups="stock.group_tracking_lot" width="0.8" attrs="{'readonly': ['|',                             ('is_editable', '=', False),                             ('state', '!=', 'confirm')]}" string="Package" optional="show"/>
+					                <field name="partner_id" groups="stock.group_tracking_owner" attrs="{'readonly': ['|',                             ('is_editable', '=', False),                             ('state', '!=', 'confirm')]}"/>
+					                <field name="theoretical_qty" string="On Hand" width="0.5" force_save="1" readonly="1" optional="show"/>
+					                <button name="action_refresh_quantity" string="Refresh quantity" title="Refresh quantity" icon="fa-refresh" type="object" attrs="{'invisible': [('outdated', '=', False)]}"/>
+					                <field name="product_qty" attrs="{'readonly': [('state', '!=', 'confirm')]}" width="0.5" string="Counted"/>
+					                <field name="difference_qty" optional="show" width="0.5"/>
+					                <field name="product_uom_id" string="UoM" groups="uom.group_uom" width="0.3" force_save="1"/>
+					                <field name="inventory_id" invisible="1"/>
+					                <field name="state" invisible="1"/>
+					            </tree>
+	                        </field>
+	                    </page>
+
+	                </notebook>    
+            	
+            	</xpath>
+            	
+            	
+			</field>
+		</record>
+		
+		
+		
+			
+	
+	
+	
+	
+	
+		
+		<!-- Stock Picking Form -->
+		<record id="sh_inventory_barcode_scanner_picking_form" model="ir.ui.view">
+			<field name="name">sh.inventory.barcode.scanner.picking.form</field>
+			<field name="model">stock.picking</field> 
+			<field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+				<field name="partner_id" position="after">
+              		<field name="_barcode_scanned" widget="barcode_handler" invisible="1"/>
+            	</field>
+            	
+            	
+            	
+            	<xpath expr="//field[@name='move_ids_without_package']/tree" position="attributes">
+            	
+                    <attribute name="decoration-primary">sh_inventory_barcode_scanner_is_last_scanned == True</attribute>
+       	            	
+            	</xpath>            	
+            	
+            	
+            	
+            	<xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='product_id']" position="before">
+            	
+  				
+  					<field name="sequence" widget="handle" />   					
+   					 
+   					<field name="sh_inventory_barcode_scanner_is_last_scanned" invisible="1"/>        	
+            	
+            	</xpath>              	
+            	
+            	
+			</field>
+		</record>
+		
+
+		<!-- Stock Move Wizard Form -->
+		<record id="sh_inventory_barcode_scanner_stock_move_operations" model="ir.ui.view">
+			<field name="name">sh.inventory.barcode.scanner.stock.move.operations</field>
+			<field name="model">stock.move</field> 
+			<field name="inherit_id" ref="stock.view_stock_move_operations"/>
+            <field name="arch" type="xml">
+				<field name="product_id" position="after">
+              		<field name="_barcode_scanned" widget="barcode_handler" invisible="1"/>
+              		
+            	</field>		
+		
+				</field>
+		</record>
+
+
+		
+		
+		
+		
+		<!-- Stock Scrap Form -->
+		<record id="sh_scrap_barcode_scanner_stock_scrap_form2" model="ir.ui.view">
+			<field name="name">sh.scrap.barcode.scanner.stock.scrap.form2</field>
+			<field name="model">stock.scrap</field> 
+			<field name="inherit_id" ref="stock.stock_scrap_form_view2"/>
+            <field name="arch" type="xml">
+				<field name="product_id" position="after">
+              		<field name="_barcode_scanned" widget="barcode_handler" invisible="1"/>
+            	</field>
+			</field>
+		</record>			
+
+		<record id="sh_scrap_barcode_scanner_stock_scrap_form" model="ir.ui.view">
+			<field name="name">sh.scrap.barcode.scanner.stock.scrap.form</field>
+			<field name="model">stock.scrap</field> 
+			<field name="inherit_id" ref="stock.stock_scrap_form_view"/>
+            <field name="arch" type="xml">
+				<field name="product_id" position="after">
+              		<field name="_barcode_scanned" widget="barcode_handler" invisible="1"/>
+            	</field>
+			</field>
+		</record>
+		
+				
+			
+		
+	</data>
+</odoo>	

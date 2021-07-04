@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+       <record id="mbs_get_price_wizard" model="ir.ui.view">
+            <field name="name">Get price_checkers Price</field>
+            <field name="model">mbs.get.price</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+                <form string="Get Price" create="false" edit="false">
+                <sheet>
+                    
+                  
+                   
+	               <div attrs="{'invisible': [('post_msg', 'in', ['',False] )]}" class="alert"> 
+	               		<field readonly="1" name="post_msg"/>
+	               	</div>
+	               	
+	               	
+                    <div style="padding-left: 1.2%;">
+	                   <group>
+	            	
+			            	<group>
+								<field name="sh_price_checker_barcode_mobile"/>  
+							    <field name="sh_price_checker_bm_is_cont_scan"/>   					
+			            	</group>
+	            	
+	                   </group>       
+                    </div>
+    
+
+
+
+
+			 <script type="text/javascript" src="/sh_all_in_one_mbs/static/src/js/ZXing.js"></script>
+			 <script type="text/javascript" src="/sh_all_in_one_mbs/static/src/js/sh_price_checker_barcode_mobile.js"></script>		 
+			 
+	        <section class="oe_edit_only">
+		
+	            <div>
+	                <a role='button' style="color:#fff;border-radius:0px;margin-bottom:5px;margin-right:5px;" class="btn btn-primary" id="js_id_sh_price_checker_barcode_mobile_start_btn">
+	                	<i class="fa fa-barcode"></i>
+	                	Start
+	                </a>
+	                <a role='button' style="display:none;color:#fff;border-radius:0px;margin-bottom:5px;margin-right:5px;" class="btn btn-danger" id="js_id_sh_price_checker_barcode_mobile_reset_btn">
+	                    <i class="fa fa-barcode"></i>
+	                	Stop
+	                </a>
+	            </div>
+	
+	  			
+	            <div id="js_id_sh_price_checker_barcode_mobile_vid_div" style="display:none;">
+	            
+			  		<group style="margin-bottom: 10px;">
+							<div class="form-group row" style="margin-bottom:0px;">
+		 					<strong style="align-self: center;" class="col-3">Camera</strong>
+		          				<select class="col-8 form-control" id="js_id_sh_price_checker_barcode_mobile_cam_select">
+		             			</select>
+							</div>	
+			         </group>
+		                     
+	                <video id="video" class="cls_sh_all_in_one_mbs_video_tag" width="600" height="400" style="border: 1px solid gray"></video>
+	                
+	            	<span style="display:block;">Result:</span>
+	            	<code id="js_id_sh_price_checker_barcode_mobile_result"></code>
+	  			</div>	  	  			
+	  			
+	
+	        </section>      	
+
+     
+
+                    
+                    
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+
+        <record id="action_view_mbs_barcode_wizard" model="ir.actions.act_window">
+            <field name="name">Price Checker</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mbs.get.price</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mbs_get_price_wizard"/>
+            <field name="target">current</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem id="sh_mbs_wizard"
+            name="Price Checker"
+            action="action_view_mbs_barcode_wizard"
+            groups="sh_all_in_one_mbs.sh_price_checker_group"
+            sequence="10"/>
+            
+            
+            
+            
+            
+            
+
+</odoo>

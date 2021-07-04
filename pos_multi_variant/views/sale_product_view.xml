@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+<!--  ############## Field Fetch in Settings ###################-->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+<!--     <field name="name">sale.order.form.sale.image</field>-->
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@data-key='sale_management']" position="inside">
+
+                         <h2>Field Selection</h2>
+
+                 <div class="row mt16 o_settings_container">
+                       <div class="col-12 col-lg-12 o_setting_box">
+
+                           <div class="row">
+
+                               <div class="col-md-6">
+                                  <h3>Print Image</h3>
+
+                                   <div class="row">
+
+                                   <div class="col-md-1">
+                                       <field name="print_image"/>
+                                   </div>
+                                    <div class="col-md-5">
+                                         <strong>View </strong>
+                                    </div>
+                                       </div>
+
+                                   <div class="row">
+                                        <div class="col-md-1">
+                                       <field name="print_image"/>
+                                   </div>
+                                    <div class="col-md-5">
+                                         <strong>Print </strong>
+                                    </div>
+
+                                   </div>
+
+                               </div>
+
+
+
+
+                                <div class="col-md-6">
+                                     <h3>Image Size</h3>
+                                    <div class="row">
+                                          <div class="col-md-5">
+                                            <field name="image_sizes"/>
+                                              </div>
+
+                                            <div class="col-md-1">
+
+                                                 <strong>View</strong>
+
+                                            </div>
+
+                                         </div>
+
+
+                                       <div class="row">
+
+                                        <div class="col-md-5">
+                                            <field name="image_sizes"/>
+                                              </div>
+
+                                            <div class="col-md-1">
+
+                                                 <strong>Print</strong>
+
+                                            </div>
+
+
+
+
+                                         </div>
+
+                               </div>
+
+                           </div>
+
+                </div>
+                </div>
+
+
+                     </xpath>
+
+                </field>
+
+         </record>
+
+<!--    ############## Field Fetch in Settings ###################-->
+
+    <record id="view_order_image_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.sale.image</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="before">
+                <field name="image_small" widget="image"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="before">
+                <field name="image_small" widget="image" height="50"/>
+            </xpath>
+            <field name="payment_term_id" position="before">
+                <field name="print_image"/>
+                <field name="image_sizes"/>
+            </field>
+        </field>
+    </record>
+
+
+
+</odoo>
