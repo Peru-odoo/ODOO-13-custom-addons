@@ -45,23 +45,23 @@
             </div>
         </t>
     </t>
-<!--    <t t-extend="OrderReceipt">-->
-<!--            <t t-jquery="t[t-if='!simple']" t-operation="after">-->
+    <t t-extend="OrderReceipt">
+            <t t-jquery="t[t-if='!simple']" t-operation="after">
 
-<!--               <t t-foreach="line.product_variants" t-as="variant">-->
-<!--                   <div class="pos-receipt-left-padding">-->
-<!--                    <li>-->
-<!--                        <em>-->
-<!--                        Charges for-->
-<!--                        <t t-esc="variant.type" />:-->
-<!--                        </em>-->
-<!--                        @-->
-<!--                        <t t-esc="variant.extra_price"/>-->
-<!--                    </li>-->
-<!--                   </div>-->
-<!--                </t>-->
-<!--            </t>-->
-<!--    </t>-->
+               <t t-foreach="line.product_variants" t-as="variant">
+                   <div class="pos-receipt-left-padding">
+                    <li>
+                        <em>
+                        Charges for
+                        <t t-esc="variant.type" />:
+                        </em>
+                        @
+                        <t t-esc="variant.extra_price"/>
+                    </li>
+                   </div>
+                </t>
+            </t>
+    </t>
 
 </templates>
 

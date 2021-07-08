@@ -30,19 +30,16 @@
     'category': 'Point of Sale',
     'depends': ['base',
                 'point_of_sale',
-                'sale_management'
+                "sale_management"
                 ],
     'data': ['views/pos_variants.xml',
              'security/ir.model.access.csv',
              'views/pos_wizard.xml',
-             'views/sale_product_view.xml',
-              "views/report_saleorder.xml"
-             ],
+             "views/sale_product_view.xml", "views/report_saleorder.xml"],
     'images': ['static/description/banner.png'],
     'license': 'AGPL-3',"LGPL-3"
     'installable': True,
     'qweb': ['static/src/xml/label.xml',
-             'static/src/xml/popup.xml'
-             "views/sale_product_view.xml", "views/report_saleorder.xml"],
+             'static/src/xml/popup.xml'],
     'auto_install': False,
 }
